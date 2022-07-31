@@ -43,7 +43,7 @@ app.get("/api/:date?", (req, res) => {
   console.log({ date });
   if (date instanceof Date && !isNaN(date)) {
     res.json({
-      unix: isUnixInput ? input : Math.round(date.getTime() / 1000),
+      unix: isUnixInput ? Number.parseInt(input) : Math.round(date.getTime()),
       utc: date.toUTCString(),
     });
   } else {
